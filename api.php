@@ -188,7 +188,7 @@ class MealApi
             $sql = "SELECT *, recipes.*, users.user_id FROM `meal_plans`
             INNER JOIN recipes ON meal_plans.recipe_id = recipes.recipe_id
             INNER JOIN users ON recipes.author_id = users.user_id
-            WHERE users.user_id = :user_id";
+            WHERE users.user_id = :user_id ORDER BY meal_plans.start_date ASC";
 
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(":user_id", $json["user_id"]);
